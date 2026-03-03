@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-Loop | My First App</title>
+    <!-- We use Tailwind CSS for the design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- We use Google Fonts for the aesthetic look -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* This is the custom CSS we discussed earlier */
+        .v-card {
+            transition: all 0.3s ease;
+        }
+        .v-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- 1. NAVIGATION BAR -->
+    <nav class="bg-white border-b border-slate-200 px-6 py-4 flex justify-between items-center sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">V</div>
+            <span class="text-xl font-extrabold tracking-tight">V-Loop</span>
+        </div>
+        <div class="flex gap-4">
+            <button class="text-sm font-semibold text-slate-600">Explore</button>
+            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-lg shadow-indigo-100">Login</button>
+        </div>
+         <div class="flex gap-5">
+            <!-- ---------------------------------------------------------
+                 NEW CODE SECTION: SELL BUTTON
+                 This button triggers the popup form.
+                 --------------------------------------------------------- -->
+            <button onclick="toggleModal()" class="bg-indigo-600 text-white px-5 py-2 rounded-xl text-sm font-bold shadow-lg shadow-indigo-100 hover:bg-indigo-700 transition-all">
+                + Sell Your Gear
+            </button>
+            
+            <button class="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-slate-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 2. HERO SECTION (Welcome Message) -->
+    <header class="max-w-4xl mx-auto px-6 py-12 text-center">
+        <h1 class="text-4xl font-black mb-4">The Campus Loop.</h1>
+        <p class="text-slate-500 text-lg">Buy, sell, or rent items from your college peers. Safe, simple, and student-only.</p>
+    </header>
+
+    <!-- 3. PRODUCT GRID -->
+    <main class="max-w-6xl mx-auto px-6 pb-20">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Product Card 1 -->
+            <div class="v-card bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm p-4">
+                <img src="https://i0.wp.com/www.shopatprince.com/wp-content/uploads/2020/01/20200004.jpg?fit=512%2C512&ssl=1" 
+                     class="w-full h-48 object-cover rounded-2xl mb-4" alt="Book">
+                <span class="text-[10px] font-bold text-indigo-600 uppercase tracking-widest">Tools
+                
+                </span>
+                <h3 class="font-bold text-lg mt-1">Engineering Drawing Kit</h3>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="text-xl font-black">₹450</span>
+                    <button class="bg-slate-900 text-white px-4 py-2 rounded-xl text-xs font-bold">View Deal</button>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="v-card bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm p-4">
+                <img src="images/labcoat.jpg" 
+                     class="w-full h-48 object-cover rounded-2xl mb-4" alt="Lab Coat">
+                <span class="text-[10px] font-bold text-blue-500 uppercase tracking-widest">Lab Gear</span>
+                <h3 class="font-bold text-lg mt-1">Professional Lab Coat</h3>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="text-xl font-black">₹150 <small class="text-slate-400 font-normal">/Day</small></span>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded-xl text-xs font-bold">Rent Now</button>
+                </div>
+            </div>
+             <!-- Product Card 3 -->
+            <div class="v-card bg-white rounded-3xl border border-slate-100 overflow-hidden shadow-sm p-4">
+                <img src="https://preview.redd.it/s4wfed4t5ga21.jpg?width=1080&crop=smart&auto=webp&s=dac789f8e4a75a803fb98c69a451a847d250cbe1" 
+                     class="w-full h-48 object-cover rounded-2xl mb-4" alt="Lab Coat">
+                <span class="text-[10px] font-bold text-blue-500 uppercase tracking-widest"> Textbook</span>
+                <h3 class="font-bold text-lg mt-1">  S1 Textbooks</h3>
+                <div class="flex justify-between items-center mt-4">
+                    <span class="text-xl font-black">₹150 <small class="text-slate-400 font-normal">/Day</small></span>
+                    <button class="bg-blue-500 text-white px-4 py-2 rounded-xl text-xs font-bold">Rent Now</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 4. BOTTOM ACTION BAR (Mobile View Only) -->
+    <div class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-white px-6 py-3 rounded-2xl shadow-2xl border border-slate-100 flex gap-8 items-center md:hidden">
+        <button class="text-indigo-600 font-bold text-xs uppercase tracking-widest">Home</button>
+        <button class="text-slate-400 font-bold text-xs uppercase tracking-widest">Search</button>
+        <button class="text-slate-400 font-bold text-xs uppercase tracking-widest">Profile</button>
+    </div>
+
+</body>
+</html>
